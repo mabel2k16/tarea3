@@ -56,7 +56,6 @@ const branchRequest = (duenio, nomRepositorio) => {
     });
   });
 };
-
 let loginDuenio;
 let nomRepositorio;
 verTodosGits()
