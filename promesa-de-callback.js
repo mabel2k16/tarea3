@@ -56,10 +56,6 @@ const branchRequest = (duenio, nomRepositorio) => {
     });
   });
 };
-<<<<<<< HEAD
-=======
-
->>>>>>> 566f13fd45e217e7d73b71e7f33f4cf3396b6361
 let loginDuenio;
 let nomRepositorio;
 verTodosGits()
@@ -70,11 +66,7 @@ verTodosGits()
   .then((repositorio) => {
     if (Object.keys(repositorio).length > 0) {
       repositorio.forEach((element) => {
-<<<<<<< HEAD
-        console.log('Nombre repositorio:  ', element.name, 'Descripcion: ', element.description);
-=======
-        console.log('Nombre repositorio: ', element.name, 'Descripcion: ', element.description);
->>>>>>> 566f13fd45e217e7d73b71e7f33f4cf3396b6361
+        console.log('Nombre repositorio FIX:  ', element.name, 'Descripcion: ', element.description);
       });
       nomRepositorio = repositorio[0].name;
       return branchRequest(loginDuenio, nomRepositorio);
