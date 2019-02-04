@@ -1,0 +1,32 @@
+{
+  "name": "tarea3",
+  "version": "1.0.0",
+  "description": "callback",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mabel2k16/tarea3.git"
+  },
+  "keywords": [
+    "callback"
+  ],
+  "author": "Mabel Peña",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mabel2k16/tarea3/issues"
+  },
+  "homepage": "https://github.com/mabel2k16/tarea3#readme",
+  "devDependencies": {
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.0",
+    "eslint-plugin-react": "^7.12.4"
+  },
+  "dependencies": {
+    "request": "^2.88.0"
+  }
+}
