@@ -66,7 +66,7 @@ verTodosGits()
   .then((repositorio) => {
     if (Object.keys(repositorio).length > 0) {
       repositorio.forEach((element) => {
-        console.log('Nombre repositorio: ', element.name, 'Descripcion: ', element.description);
+        console.log('Nombre repositorio:  ', element.name, 'Descripcion: ', element.description);
       });
       nomRepositorio = repositorio[0].name;
       return branchRequest(loginDuenio, nomRepositorio);
