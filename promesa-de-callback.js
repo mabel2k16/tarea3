@@ -21,6 +21,11 @@ const verTodosGits = () => {
   });
 };
 
+const seleccionarPropiedadesImportantes = element => ({
+  name: element.name,
+  description: element.description,
+});
+
 const repositorioRequest = (loginBuscado) => {
   const options2 = {
     uri: `https://api.github.com/users/${loginBuscado}/repos`,
@@ -58,6 +63,7 @@ const branchRequest = (duenio, nomRepositorio) => {
 };
 let loginDuenio;
 let nomRepositorio;
+
 verTodosGits()
   .then((repositorios) => {
     loginDuenio = repositorios[7].owner.login;
@@ -65,27 +71,28 @@ verTodosGits()
   })
   .then((repositorio) => {
     if (Object.keys(repositorio).length > 0) {
-      repositorio.forEach((element) => {
-        console.log('Nombre repositorio FIX:  ', element.name, 'Descripcion: ', element.description);
-      });
+      // repositorio.forEach((element) => {
+      //   console.log('Nombre repositorio FIX:  ', element.name, 'Descripcion: ', element.description);
+      // });
+      const resultados = repositorio.map(seleccionarPropiedadesImportantes);
+      console.log(' REPOSITORISO DE ', loginDuenio, '======================');
+      console.log(resultados);
+      console.log('========================================================');
       nomRepositorio = repositorio[0].name;
       return branchRequest(loginDuenio, nomRepositorio);
     }
-    console.log('sin repositorio');
-    throw new Error('sin repositorio');
-    // return reject(new Error('sin repositorios'));
+    return Promise.reject(new Error('sin repositorios'));
   })
   .then((respuesta) => {
     if (Object.keys(respuesta).length > 0) {
+      console.log(' BRANCH DEL REPOSITORIO ', nomRepositorio, '======================');
       console.log(respuesta);
-      // return resolve(respuesta);
-    } else {
-      console.log('Repositorio: ', nomRepositorio, 'Sin branches');
-      throw new Error('Repositorio: ', nomRepositorio, 'Sin branches');
-    // return reject(new Error('Repositorio: ', nomRepositorio, 'Sin branches'));
+      console.log('==================================================================');
+
+      return Promise.resolve(respuesta);
     }
+    return Promise.reject(new Error('Repositorio: ', nomRepositorio, 'Sin branches'));
   })
   .catch((err) => {
-    console.log('error', err);
-    // reject(err)
+    return Promise.reject(err);
   });
